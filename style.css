@@ -1,0 +1,115 @@
+:root {
+    --bg-color: #f8f9fa;
+    --text-color: #212529;
+    --card-bg: #ffffff;
+    --border-color: #e9ecef;
+    --primary: #007bff;
+}
+
+[data-theme="dark"] {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --card-bg: #1e1e1e;
+    --border-color: #333333;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: 0.3s;
+}
+
+nav {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 20px;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+    align-items: center;
+}
+
+#theme-toggle, #lang-toggle {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    cursor: pointer;
+    color: var(--text-color);
+    font-size: 1.2rem;
+}
+
+.hero {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+section {
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 25px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.tech-stack {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.tech-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.tech-item img { width: 40px; height: 40px; }
+
+.lang-grid {
+    margin-top: 25px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 15px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: var(--primary);
+    color: white !important;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+h3 { margin: 0; color: var(--primary); }
+.exp-item, .edu-item { margin-bottom: 20px; }
+
+.connect-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap; /* Keeps them from breaking on mobile */
+    margin-top: 15px;
+}
+
+
+.btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    transition: 0.2s;
+}
