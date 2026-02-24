@@ -161,6 +161,7 @@ h3 i { margin-right: 12px; font-size: 0.9em; opacity: 0.8; }
     gap: 12px;
     flex-wrap: wrap;
     margin-top: 15px;
+    justify-content: center;
 }
 
 .dropdown {
@@ -227,15 +228,21 @@ h3 i { margin-right: 12px; font-size: 0.9em; opacity: 0.8; }
     .connect-buttons .btn i,
     .connect-buttons .btn svg {
         margin-right: 0;
-        font-size: 1.3rem;
+        font-size: 1.4rem;
     }
 
     .connect-buttons .btn {
-        padding: 12px 18px;
-        min-width: 55px;
+        width: 55px;
+        height: 55px;
+        padding: 0;
         display: flex;
         justify-content: center;
         align-items: center;
+        border-radius: 12px;
+    }
+
+    .connect-buttons {
+        gap: 15px;
     }
 }
 
