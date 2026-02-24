@@ -103,7 +103,10 @@ function shuffleAndDisplay() {
 
     gallery.innerHTML = '';
 
-    indices.slice(0, 9).forEach(num => {
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const limit = isMobile ? 8 : 9;
+
+    indices.slice(0, limit).forEach(num => {
         const img = document.createElement('img');
         img.src = `pics/pic${num}.jpg`;
         img.alt = "Personal";
@@ -124,3 +127,7 @@ if (reshuffleBtn) {
         shuffleAndDisplay();
     });
 }
+
+window.addEventListener('orientationchange', () => {
+    setTimeout(shuffleAndDisplay, 200);
+});
