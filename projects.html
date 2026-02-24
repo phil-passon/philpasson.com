@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="./favicon.png">
+    <link rel="apple-touch-icon" href="./favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>Projects | Phil Passon</title>
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+</head>
+<body>
+<header>
+    <nav>
+        <div class="logo">Phil Passon</div>
+        <ul class="nav-links">
+            <li><a href="index.html" data-en="← Back" data-de="← Zurück">← Zurück</a></li>
+            <li><button id="theme-toggle">🌙</button></li>
+            <li><button id="lang-toggle">🇬🇧</button></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section>
+        <h1 data-en="My Projects" data-de="Meine Projekte">Meine Projekte</h1>
+        <p data-en="A collection of my work in software development, ranging from Python utilities to Java converters."
+           data-de="Eine Sammlung meiner Arbeiten in der Softwareentwicklung, von Python-Utilities bis hin zu Java-Konvertern.">
+            Eine Sammlung meiner Arbeiten in der Softwareentwicklung.
+        </p>
+
+        <h2 style="margin-top: 40px; border-bottom: 2px solid var(--primary); display: inline-block;">Python</h2>
+
+        <div class="project-card-large" style="margin-top: 20px; padding: 25px; border: 1px solid var(--border-color); border-radius: 12px; background: var(--card-bg);">
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" style="width: 30px;">
+                <h3 style="margin: 0;">🕹️ Pong with Pygame</h3>
+            </div>
+            <p data-en="A polished arcade-style 2D Pong experience with progressive difficulty and ball spin mechanics."
+               data-de="Ein poliertes Arcade-Style 2D Pong mit progressivem Schwierigkeitsgrad und Ball-Spin-Mechanik.">
+                Ein poliertes Arcade-Style 2D Pong...
+            </p>
+            <ul style="font-size: 0.9rem; margin-top: 10px; padding-left: 20px;">
+                <li data-en="Progressive difficulty (+10% speed per hit)" data-de="Progressiver Schwierigkeitsgrad (+10% Speed pro Treffer)">Progressiver Schwierigkeitsgrad</li>
+                <li data-en="Dynamic ball spin based on paddle impact" data-de="Dynamischer Ball-Spin basierend auf Aufprallpunkt">Dynamischer Ball-Spin</li>
+                <li data-en="Handicap shrinking system" data-de="Handicap-System (Schrumpfende Paddles)">Handicap-System</li>
+            </ul>
+            <a href="https://github.com/phil-passon/Pong" target="_blank" class="btn" style="margin-top: 15px;">GitHub Repo</a>
+        </div>
+
+        <div class="project-card-large" style="margin-top: 20px; padding: 25px; border: 1px solid var(--border-color); border-radius: 12px; background: var(--card-bg);">
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" style="width: 30px;">
+                <h3 style="margin: 0;">🛡️ Aegis Discord Bot</h3>
+            </div>
+            <p data-en="Professional-grade Discord utility for server management, support tickets, and community engagement."
+               data-de="Professioneller Discord-Bot für Server-Management, Support-Tickets und Community-Engagement.">
+                Professioneller Discord-Bot...
+            </p>
+            <ul style="font-size: 0.9rem; margin-top: 10px; padding-left: 20px;">
+                <li data-en="Modular cog architecture with discord.py" data-de="Modulare Cog-Architektur mit discord.py">Modulare Cog-Architektur</li>
+                <li data-en="Integrated Ticket-System & Moderation tools" data-de="Integriertes Ticket-System & Moderations-Tools">Integriertes Ticket-System</li>
+                <li data-en="Interactive Embed Creator & Fun commands" data-de="Interaktiver Embed-Creator & Fun-Commands">Interaktiver Embed-Creator</li>
+            </ul>
+            <a href="https://github.com/phil-passon/Aegis" target="_blank" class="btn" style="margin-top: 15px;">GitHub Repo</a>
+        </div>
+
+        <h2 style="margin-top: 40px; border-bottom: 2px solid var(--primary); display: inline-block;">Java</h2>
+
+        <div class="project-card-large" style="margin-top: 20px; padding: 25px; border: 1px solid var(--border-color); border-radius: 12px; background: var(--card-bg);">
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" style="width: 30px;">
+                <h3 style="margin: 0;">🔥 Temperature Converter</h3>
+            </div>
+            <p data-en="A robust command-line utility for Celsius and Fahrenheit conversions with error handling."
+               data-de="Ein robustes Kommandozeilen-Tool für Celsius- und Fahrenheit-Umrechnungen inkl. Error-Handling.">
+                Ein robustes Java-Tool zur Temperaturumrechnung.
+            </p>
+            <ul style="font-size: 0.9rem; margin-top: 10px; padding-left: 20px;">
+                <li data-en="Interactive CLI menu loop" data-de="Interaktives CLI-Menü">Interaktives CLI-Menü</li>
+                <li data-en="Exception handling for invalid inputs" data-de="Exception Handling für fehlerhafte Eingaben">Exception Handling</li>
+                <li data-en="Mathematical precision using pure functions" data-de="Mathematische Präzision durch Pure Functions">Präzision durch Pure Functions</li>
+            </ul>
+            <a href="https://github.com/phil-passon/Celsius-to-Fahrenheit-and-back-Converter" target="_blank" class="btn" style="margin-top: 15px;">GitHub Repo</a>
+        </div>
+
+        <h2 style="margin-top: 40px; border-bottom: 2px solid var(--primary); display: inline-block;">Web</h2>
+
+        <div class="project-card-large" style="margin-top: 20px; padding: 25px; border: 1px solid var(--border-color); border-radius: 12px; background: var(--card-bg);">
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                <i class="fas fa-globe" style="font-size: 25px; color: var(--primary);"></i>
+                <h3 style="margin: 0;">🌐 philpasson.com</h3>
+            </div>
+            <p data-en="The multilingual personal portfolio website you are currently browsing."
+               data-de="Die mehrsprachige Portfolio-Website, auf der du dich gerade befindest.">
+                Mein persönliches Portfolio.
+            </p>
+            <ul style="font-size: 0.9rem; margin-top: 10px; padding-left: 20px;">
+                <li data-en="Multilingual support (DE/EN) via data attributes" data-de="Mehrsprachigkeit (DE/EN) via Data-Attribute">Mehrsprachigkeit</li>
+                <li data-en="Dynamic dark/light mode toggle" data-de="Dynamischer Dark/Light-Mode">Dark/Light-Mode</li>
+                <li data-en="Vanilla JavaScript for performance" data-de="Vanilla JavaScript für maximale Performance">Vanilla JavaScript</li>
+            </ul>
+            <a href="https://github.com/phil-passon/philpasson.com" target="_blank" class="btn" style="margin-top: 15px;">GitHub Repo</a>
+        </div>
+
+    </section>
+</main>
+
+<script src="./script.js"></script>
+</body>
+</html>
