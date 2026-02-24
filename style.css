@@ -302,3 +302,42 @@ main section h1 {
     .nav-links { gap: 8px; font-size: 0.85rem; }
     #theme-toggle, #lang-toggle { width: 35px; height: 35px; font-size: 1rem; }
 }
+details {
+    display: block;
+}
+
+summary {
+    list-style: none;
+    outline: none;
+    cursor: pointer;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+summary h3 {
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+}
+
+.toggle-arrow {
+    font-size: 0.7em;
+    transition: transform 0.3s ease;
+    color: var(--primary);
+    opacity: 0.6;
+}
+
+details[open] .toggle-arrow {
+    transform: rotate(180deg);
+    opacity: 1;
+}
+
+.dropdown-text {
+    margin: 10px 0 15px 32px; /* Rückt den Text unter den Namen ein */
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text-color);
+    opacity: 0.9;
+}
