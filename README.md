@@ -17,6 +17,3 @@ A multilingual personal portfolio website built with HTML, CSS, and vanilla Java
 * `index.html`: Main structure and content containers.
 * `style.css`: Theme variables and responsive layout definitions.
 * `script.js`: Logic for language translation and theme switching.
-
-## License
-MIT License
