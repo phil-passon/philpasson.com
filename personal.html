@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="./favicon.png">
+    <link rel="apple-touch-icon" href="./favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>About Phil | Beyond the Code</title>
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+</head>
+<body>
+<header>
+    <nav>
+        <div class="logo">Phil Passon</div>
+        <ul class="nav-links">
+            <li><a href="index.html" data-en="← Back" data-de="← Zurück">← Zurück</a></li>
+            <li><button id="theme-toggle">🌙</button></li>
+            <li><button id="lang-toggle">🇬🇧</button></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <section>
+        <h1 id="page-title" data-en="Beyond the Code" data-de="Beyond the Code">Beyond the Code</h1>
+        <p id="personal-desc"
+           data-en="Besides studying and working, I enjoy traveling and eating, spending time with friends, and I am interested in cars."
+           data-de="Neben dem Studium und dem Arbeiten reise und esse ich gerne, mache was mit Freunden und interessiere mich für Autos.">
+            Neben dem Studium und dem Arbeiten reise und esse ich gerne, mache was mit Freunden und interessiere mich für Autos.
+        </p>
+        <div style="text-align: center; margin: 20px 0;">
+            <button id="reshuffle-btn" class="btn">
+                <i class="fas fa-sync-alt"></i> <span data-en="New Selection" data-de="Neu mischen">Neu mischen</span>
+            </button>
+        </div>
+        <div class="image-gallery" id="gallery"></div>
+    </section>
+</main>
+<script src="./script.js"></script>
+</body>
+</html>

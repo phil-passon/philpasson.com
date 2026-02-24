@@ -1,59 +1,77 @@
 const themeToggle = document.getElementById('theme-toggle');
 const langToggle = document.getElementById('lang-toggle');
+
+let currentLang = localStorage.getItem('lang') || 'de';
+let currentTheme = localStorage.getItem('theme') || 'light';
+
+function applyTheme(theme) {
+    document.body.setAttribute('data-theme', theme);
+    if (themeToggle) themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+    localStorage.setItem('theme', theme);
+}
+
+function applyLanguage(lang) {
+    currentLang = lang;
+    if (langToggle) langToggle.textContent = lang === 'de' ? '🇬🇧' : '🇩🇪';
+    localStorage.setItem('lang', lang);
+
+    document.querySelectorAll('[data-en]').forEach(el => {
+        el.textContent = el.getAttribute(`data-${lang}`);
+    });
+
+    const heroTitle = document.getElementById('hero-title');
+    const heroSubtitle = document.getElementById('hero-subtitle');
+
+    if (heroTitle && heroSubtitle) {
+        if (lang === 'en') {
+            heroTitle.textContent = "Hey, I'm Phil Passon! 👋";
+            heroSubtitle.textContent = "Dual Student in Business Informatics";
+        } else {
+            heroTitle.textContent = "Hey, ich bin Phil Passon! 👋";
+            heroSubtitle.textContent = "Dualer Student in Wirtschaftsinformatik";
+        }
+    }
+}
+
+applyTheme(currentTheme);
+applyLanguage(currentLang);
+
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const newTheme = document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        applyTheme(newTheme);
+    });
+}
+
+if (langToggle) {
+    langToggle.addEventListener('click', () => {
+        applyLanguage(currentLang === 'de' ? 'en' : 'de');
+    });
+}
+
 const emailBtn = document.getElementById('email-main-btn');
 const emailDropdown = document.getElementById('email-dropdown');
 const socialBtn = document.getElementById('socials-main-btn');
 const socialDropdown = document.getElementById('socials-dropdown');
 
-let currentLang = 'de';
-
-themeToggle.addEventListener('click', () => {
-    const isDark = document.body.getAttribute('data-theme') === 'dark';
-    document.body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-    themeToggle.textContent = isDark ? '🌙' : '☀️';
-});
-
-langToggle.addEventListener('click', () => {
-    currentLang = currentLang === 'de' ? 'en' : 'de';
-    langToggle.textContent = currentLang === 'de' ? '🇬🇧' : '🇩🇪';
-
-    document.querySelectorAll('[data-en]').forEach(el => {
-        el.textContent = el.getAttribute(`data-${currentLang}`);
+if (emailBtn && socialBtn) {
+    emailBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        socialDropdown.classList.remove('show');
+        emailDropdown.classList.toggle('show');
     });
 
-    if (currentLang === 'en') {
-        document.getElementById('hero-title').textContent = "Hey, I'm Phil Passon! 👋";
-        document.getElementById('hero-subtitle').textContent = "Dual Student in Business Informatics";
-        document.getElementById('about-text').textContent = "From early on, I was fascinated not only by the design of digital media...";
-        document.getElementById('connect-text').textContent = "Just send me a message if you have questions or want to connect!";
-        document.getElementById('open-client-text').innerHTML = '<i class="fas fa-envelope-open"></i> Open Client';
-        document.getElementById('copy-mail-text').innerHTML = '<i class="fas fa-copy"></i> Copy Address';
-    } else {
-        document.getElementById('hero-title').textContent = "Hey, ich bin Phil Passon! 👋";
-        document.getElementById('hero-subtitle').textContent = "Dualer Student in Wirtschaftsinformatik";
-        document.getElementById('about-text').textContent = "Schon früh hat mich nicht nur die Gestaltung digitaler Medien fasziniert...";
-        document.getElementById('connect-text').textContent = "Schreib mir einfach, wenn du Fragen hast oder dich vernetzen willst!";
-        document.getElementById('open-client-text').innerHTML = '<i class="fas fa-envelope-open"></i> Client öffnen';
-        document.getElementById('copy-mail-text').innerHTML = '<i class="fas fa-copy"></i> Adresse kopieren';
-    }
-});
+    socialBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        emailDropdown.classList.remove('show');
+        socialDropdown.classList.toggle('show');
+    });
 
-emailBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    socialDropdown.classList.remove('show');
-    emailDropdown.classList.toggle('show');
-});
-
-socialBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    emailDropdown.classList.remove('show');
-    socialDropdown.classList.toggle('show');
-});
-
-window.addEventListener('click', () => {
-    emailDropdown.classList.remove('show');
-    socialDropdown.classList.remove('show');
-});
+    window.addEventListener('click', () => {
+        emailDropdown.classList.remove('show');
+        socialDropdown.classList.remove('show');
+    });
+}
 
 window.copyEmail = function() {
     const email = 'me@philpasson.com';
@@ -68,3 +86,41 @@ window.copyEmail = function() {
         }, 2000);
     });
 };
+
+const gallery = document.getElementById('gallery');
+const reshuffleBtn = document.getElementById('reshuffle-btn');
+const totalImages = 31;
+
+function shuffleAndDisplay() {
+    if (!gallery) return;
+
+    let indices = Array.from({length: totalImages}, (_, i) => i + 1);
+
+    for (let i = indices.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [indices[i], indices[j]] = [indices[j], indices[i]];
+    }
+
+    gallery.innerHTML = '';
+
+    indices.slice(0, 9).forEach(num => {
+        const img = document.createElement('img');
+        img.src = `pics/pic${num}.jpg`;
+        img.alt = "Personal";
+        img.className = "gallery-img";
+        img.loading = "lazy";
+        gallery.appendChild(img);
+    });
+}
+
+if (gallery) {
+    shuffleAndDisplay();
+}
+
+if (reshuffleBtn) {
+    reshuffleBtn.addEventListener('click', () => {
+        reshuffleBtn.style.transform = "scale(0.95)";
+        setTimeout(() => reshuffleBtn.style.transform = "scale(1)", 100);
+        shuffleAndDisplay();
+    });
+}

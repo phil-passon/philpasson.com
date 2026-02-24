@@ -13,6 +13,14 @@
     <link rel="stylesheet" href="style.css">
 
     <title>Phil Passon</title>
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
 </head>
 <body>
 
@@ -37,6 +45,9 @@
     <section id="about">
         <h2 data-en="About Me" data-de="Über mich">Über mich</h2>
         <p id="about-text">Schon früh hat mich nicht nur die Gestaltung digitaler Medien fasziniert, sondern vor allem die Frage, wie die Technik dahinter eigentlich funktioniert. Aus ersten kreativen Projekten in der Medienproduktion wurde schnell ein tiefes Interesse an Softwareentwicklung und IT-Systemen. Heute verbinde ich dieses technische Verständnis mit meinem Studium: Als dualer Student bei OBI und der FHDW konzentriere ich mich im Bachelor Wirtschaftsinformatik voll auf den Bereich Cybersecurity, um Systeme nicht nur zu verstehen, sondern sie auch sicher zu machen.</p>
+        <a href="personal.html" class="btn">
+            <i class="fas fa-user"></i> <span data-en="Read More" data-de="Mehr erfahren">Mehr erfahren</span>
+        </a>
     </section>
 
     <section id="skills">
