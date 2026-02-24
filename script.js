@@ -1,38 +1,70 @@
-const langToggle = document.getElementById('lang-toggle');
 const themeToggle = document.getElementById('theme-toggle');
+const langToggle = document.getElementById('lang-toggle');
+const emailBtn = document.getElementById('email-main-btn');
+const emailDropdown = document.getElementById('email-dropdown');
+const socialBtn = document.getElementById('socials-main-btn');
+const socialDropdown = document.getElementById('socials-dropdown');
+
 let currentLang = 'de';
 
-const translations = {
-    en: {
-        heroTitle: "Hey, I'm Phil Passon! 👋",
-        heroSub: "Dual Student in Business Informatics",
-        about: "I’ve always been fascinated by how digital technology works under the hood. What started as creative media projects quickly turned into a deep interest in software development and IT systems. Today, I'm applying that technical curiosity as a dual student at OBI and FHDW, pursuing a Bachelor's in Business Informatics with a dedicated focus on Cybersecurity.",
-        connect: "Feel free to reach out if you want to chat or connect!"
-    },
-    de: {
-        heroTitle: "Hey, ich bin Phil Passon! 👋",
-        heroSub: "Dualer Student in Wirtschaftsinformatik",
-        about: "Schon früh hat mich nicht nur die Gestaltung digitaler Medien fasziniert, sondern vor allem die Frage, wie die Technik dahinter eigentlich funktioniert. Aus ersten kreativen Projekten in der Medienproduktion wurde schnell ein tiefes Interesse an Softwareentwicklung und IT-Systemen. Heute verbinde ich dieses technische Verständnis mit meinem Studium: Als dualer Student bei OBI und der FHDW konzentriere ich mich im Bachelor Wirtschaftsinformatik voll auf den Bereich Cybersecurity, um Systeme nicht nur zu verstehen, sondern sie auch sicher zu machen.",
-        connect: "Schreib mir einfach, wenn du Fragen hast oder dich vernetzen willst!"
-    }
-};
+themeToggle.addEventListener('click', () => {
+    const isDark = document.body.getAttribute('data-theme') === 'dark';
+    document.body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    themeToggle.textContent = isDark ? '🌙' : '☀️';
+});
 
 langToggle.addEventListener('click', () => {
     currentLang = currentLang === 'de' ? 'en' : 'de';
-    langToggle.innerText = currentLang === 'de' ? '🇬🇧' : '🇩🇪';
-
-    document.getElementById('hero-title').innerText = translations[currentLang].heroTitle;
-    document.getElementById('hero-subtitle').innerText = translations[currentLang].heroSub;
-    document.getElementById('about-text').innerText = translations[currentLang].about;
-    document.getElementById('connect-text').innerText = translations[currentLang].connect;
+    langToggle.textContent = currentLang === 'de' ? '🇬🇧' : '🇩🇪';
 
     document.querySelectorAll('[data-en]').forEach(el => {
-        el.innerText = el.getAttribute(`data-${currentLang}`);
+        el.textContent = el.getAttribute(`data-${currentLang}`);
     });
+
+    if (currentLang === 'en') {
+        document.getElementById('hero-title').textContent = "Hey, I'm Phil Passon! 👋";
+        document.getElementById('hero-subtitle').textContent = "Dual Student in Business Informatics";
+        document.getElementById('about-text').textContent = "From early on, I was fascinated not only by the design of digital media...";
+        document.getElementById('connect-text').textContent = "Just send me a message if you have questions or want to connect!";
+        document.getElementById('open-client-text').innerHTML = '<i class="fas fa-envelope-open"></i> Open Client';
+        document.getElementById('copy-mail-text').innerHTML = '<i class="fas fa-copy"></i> Copy Address';
+    } else {
+        document.getElementById('hero-title').textContent = "Hey, ich bin Phil Passon! 👋";
+        document.getElementById('hero-subtitle').textContent = "Dualer Student in Wirtschaftsinformatik";
+        document.getElementById('about-text').textContent = "Schon früh hat mich nicht nur die Gestaltung digitaler Medien fasziniert...";
+        document.getElementById('connect-text').textContent = "Schreib mir einfach, wenn du Fragen hast oder dich vernetzen willst!";
+        document.getElementById('open-client-text').innerHTML = '<i class="fas fa-envelope-open"></i> Client öffnen';
+        document.getElementById('copy-mail-text').innerHTML = '<i class="fas fa-copy"></i> Adresse kopieren';
+    }
 });
 
-themeToggle.addEventListener('click', () => {
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
-    themeToggle.innerText = isDark ? '🌙' : '☀️';
+emailBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    socialDropdown.classList.remove('show');
+    emailDropdown.classList.toggle('show');
 });
+
+socialBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    emailDropdown.classList.remove('show');
+    socialDropdown.classList.toggle('show');
+});
+
+window.addEventListener('click', () => {
+    emailDropdown.classList.remove('show');
+    socialDropdown.classList.remove('show');
+});
+
+window.copyEmail = function() {
+    const email = 'me@philpasson.com';
+    navigator.clipboard.writeText(email).then(() => {
+        const originalBtnHTML = emailBtn.innerHTML;
+        emailBtn.textContent = currentLang === 'en' ? 'Copied!' : 'Kopiert!';
+        emailBtn.style.background = '#28a745';
+
+        setTimeout(() => {
+            emailBtn.innerHTML = originalBtnHTML;
+            emailBtn.style.background = 'var(--primary)';
+        }, 2000);
+    });
+};

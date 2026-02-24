@@ -3,7 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+
+    <meta name="theme-color" content="#007bff">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+
     <title>Phil Passon</title>
 </head>
 <body>
@@ -71,11 +79,11 @@
     <section id="experience">
         <h2 data-en="Work" data-de="Berufserfahrung">Berufserfahrung</h2>
         <div class="exp-item">
-            <h3>OBI Group Holding</h3>
+            <h3><i class="fas fa-briefcase"></i> <a href="https://www.obi.de/" target="_blank" rel="noopener noreferrer">OBI Group Holding</a></h3>
             <p><span data-en="Dual Student" data-de="Dualer Student">Dualer Student</span> | 2025 - Heute</p>
         </div>
         <div class="exp-item">
-            <h3>MINDACT COM</h3>
+            <h3><i class="fas fa-briefcase"></i> <a href="https://mindact.de/en" target="_blank" rel="noopener noreferrer">MINDACT COM</a></h3>
             <p><span data-en="Media Design Intern" data-de="Praktikant Mediengestaltung">Praktikant Mediengestaltung</span> | 2022</p>
         </div>
     </section>
@@ -83,11 +91,11 @@
     <section id="education">
         <h2 data-en="Education" data-de="Ausbildung">Ausbildung</h2>
         <div class="edu-item">
-            <h3>FHDW Bergisch Gladbach</h3>
+            <h3><i class="fas fa-graduation-cap"></i> <a href="https://www.fhdw.de/" target="_blank" rel="noopener noreferrer">FHDW Bergisch Gladbach</a></h3>
             <p>B.Sc. Wirtschaftsinformatik & Cybersecurity</p>
         </div>
         <div class="edu-item">
-            <h3>Leibniz-Gymnasium Remscheid</h3>
+            <h3><i class="fas fa-graduation-cap"></i> <a href="https://www.leibniz-remscheid.de/" target="_blank" rel="noopener noreferrer">Leibniz-Gymnasium Remscheid</a></h3>
             <p>Abitur (2025)</p>
         </div>
     </section>
@@ -96,9 +104,41 @@
         <h2 data-en="Let's Talk" data-de="Kontakt">Kontakt</h2>
         <p id="connect-text">Schreib mir einfach, wenn du Fragen hast oder dich vernetzen willst!</p>
         <div class="connect-buttons">
-            <a href="https://www.linkedin.com/in/phil-passon/" class="btn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="https://github.com/phil-passon" class="btn btn-github" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href="mailto:me@philpasson.com" class="btn btn-email">Email</a>
+            <a href="https://www.linkedin.com/in/phil-passon/" class="btn" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-linkedin"></i> <span>LinkedIn</span>
+            </a>
+            <a href="https://github.com/phil-passon" class="btn btn-github" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-github"></i> <span>GitHub</span>
+            </a>
+
+            <div class="dropdown">
+                <button class="btn btn-email" id="email-main-btn">
+                    <i class="fas fa-envelope"></i> <span>Email</span>
+                </button>
+                <div class="dropdown-content" id="email-dropdown">
+                    <a href="mailto:me@philpasson.com" id="open-client-text"><i class="fas fa-envelope-open"></i> Client öffnen</a>
+                    <button onclick="copyEmail()" id="copy-mail-text"><i class="fas fa-copy"></i> Adresse kopieren</button>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="btn" id="socials-main-btn">
+                    <i class="fas fa-share-alt"></i> <span data-en="Socials" data-de="Socials">Socials</span>
+                </button>
+                <div class="dropdown-content" id="socials-dropdown">
+                    <a href="https://www.instagram.com/phil.pass.on/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="https://x.com/phil_passon" target="_blank"><i class="fa-brands fa-x-twitter"></i> X / Twitter</a>
+                    <a href="https://threads.net/@phil.pass.on" target="_blank"><i class="fa-brands fa-threads"></i> Threads</a>
+                    <a href="https://bsky.app/profile/philpasson.bsky.social" target="_blank" style="display: flex; align-items: center;">
+                        <svg width="18" height="18" viewBox="0 0 566 500" fill="currentColor" style="margin-right: 12px; flex-shrink: 0;">
+                            <path d="M124.6 21.1c111.7 82.5 158.4 151.7 158.4 228.8 0-77.1 46.7-146.3 158.4-228.8C505.7-26.3 566 11.5 566 113.1c0 14.5-2 29-6.1 43-16.3 55.4-71.5 74.3-118 64.1 71.8 15.6 120.1 63.8 120.1 123.6 0 94.8-74.9 135.1-150.3 135.1-41.9 0-81.8-12-111-40.4-1.1-1.1-2.2-2.2-3.3-3.4-1.1 1.2-2.2 2.3-3.3 3.4-29.2 28.5-69.1 40.4-111 40.4-75.4 0-150.3-40.3-150.3-135.1 0-59.8 48.3-108 120.1-123.6-46.5 10.2-101.7-8.7-118-64.1-4.1-14-6.1-28.5-6.1-43C0 11.5 60.3-26.3 124.6 21.1z"/>
+                        </svg>
+                        Bluesky
+                    </a>
+                    <a href="https://www.reddit.com/user/philpasson" target="_blank"><i class="fab fa-reddit"></i> Reddit</a>
+                    <a href="https://www.pinterest.com/philpasson" target="_blank"><i class="fab fa-pinterest"></i> Pinterest</a>
+                </div>
+            </div>
         </div>
     </section>
 </main>
