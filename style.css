@@ -203,21 +203,27 @@ details[open] .toggle-arrow { transform: rotate(180deg); opacity: 1; }
     width: 100%;
 }
 
+/* Erzwingt, dass alle 4 Container (2x <a>, 2x <div>) den gleichen Platz einnehmen */
 .connect-buttons > a,
 .connect-buttons .dropdown {
     flex: 1;
     min-width: 0;
+    max-width: 180px; /* Begrenzt die Breite auf ein edles Maß */
 }
 
+/* Einheitliche Höhe und Font-Korrektur */
 .connect-buttons .btn,
 .connect-buttons .dropdown button {
     width: 100%;
     min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
     font-size: 16px !important;
     font-weight: 600 !important;
-    white-space: nowrap;
+    padding: 10px 15px;
 }
-
 .dropdown {
     position: relative;
 }
@@ -312,15 +318,42 @@ details[open] .toggle-arrow { transform: rotate(180deg); opacity: 1; }
 }
 
 @media (max-width: 600px) {
-    .connect-buttons { flex-wrap: wrap; } /* Mobile: Umbruch erlauben */
     .image-gallery { grid-template-columns: repeat(2, 1fr); }
-    .connect-buttons .btn span { display: none; }
+
+    .connect-buttons {
+        flex-wrap: nowrap; /* Verhindert Umbruch, damit alle in einer Zeile bleiben */
+        justify-content: center; /* Zentriert die Button-Leiste */
+        gap: 15px; /* Etwas mehr Platz zwischen den Kreisen */
+    }
+
+    /* Verwandelt die Buttons in Kreise */
     .connect-buttons .btn,
     .connect-buttons .dropdown button {
-        width: 55px;
-        height: 55px;
-        min-height: 55px;
-        border-radius: 12px;
+        width: 50px !important;
+        height: 50px !important;
+        min-width: 50px !important;
+        min-height: 50px !important;
+        border-radius: 50% !important; /* Macht sie rund */
+        padding: 0 !important; /* Entfernt Padding für perfekte Zentrierung des Icons */
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
     }
-    .connect-buttons .dropdown { flex: 0; }
+
+    /* Blendet den Text aus */
+    .connect-buttons .btn span {
+        display: none !important;
+    }
+
+    /* Icons etwas größer für bessere Bedienbarkeit auf dem Handy */
+    .connect-buttons .btn i,
+    .connect-buttons .btn svg {
+        margin: 0 !important; /* Entfernt den Abstand, den wir für den Text hatten */
+        font-size: 1.4rem;
+    }
+
+    /* Verhindert, dass der Dropdown-Container das Layout stört */
+    .connect-buttons .dropdown {
+        flex: none;
+    }
 }
