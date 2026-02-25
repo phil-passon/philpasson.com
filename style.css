@@ -72,11 +72,11 @@ nav {
     background: linear-gradient(135deg, #007bff, #0056b3);
     color: white;
     text-align: center;
-    padding: 60px 20px;
+    padding: 80px 30px;
     margin: 0 auto;
     max-width: 700px;
+    box-sizing: border-box;
 }
-
 section {
     max-width: 700px;
     margin: 20px auto;
@@ -231,8 +231,9 @@ details[open] .toggle-arrow { transform: rotate(180deg); opacity: 1; }
 /* Gemeinsames Design für Email & Socials Dropdown */
 .dropdown-content {
     display: none;
+    flex-direction: column !important;
     position: absolute;
-    bottom: 130%; /* Schwebt über dem Button */
+    bottom: 130%;
     left: 50%;
     transform: translateX(-50%);
     background-color: var(--card-bg);
@@ -286,7 +287,7 @@ details[open] .toggle-arrow { transform: rotate(180deg); opacity: 1; }
 }
 
 .show {
-    display: block !important;
+    display: flex !important;
     animation: fadeInUp 0.3s ease-out;
 }
 
@@ -311,44 +312,44 @@ details[open] .toggle-arrow { transform: rotate(180deg); opacity: 1; }
 
 .gallery-img:hover { transform: scale(1.02); }
 
-/* --- Media Queries (Mobile Fixes) --- */
-@media (max-width: 768px) {
-    .hero { margin: 15px auto; width: calc(100% - 30px); }
-    .exp-item h3 a, .edu-item h3 a { white-space: nowrap; }
-}
+@media (max-width: 600px) {
+    .connect-buttons {
+        flex-wrap: nowrap;
+        justify-content: center;
+        gap: 15px;
+    }
 
 @media (max-width: 600px) {
     .image-gallery { grid-template-columns: repeat(2, 1fr); }
 
     .connect-buttons {
-        flex-wrap: nowrap; /* Verhindert Umbruch, damit alle in einer Zeile bleiben */
-        justify-content: center; /* Zentriert die Button-Leiste */
-        gap: 15px; /* Etwas mehr Platz zwischen den Kreisen */
+        flex-wrap: nowrap;
+        justify-content: center;
+        gap: 15px;
     }
 
-    /* Verwandelt die Buttons in Kreise */
     .connect-buttons .btn,
     .connect-buttons .dropdown button {
         width: 50px !important;
         height: 50px !important;
         min-width: 50px !important;
         min-height: 50px !important;
-        border-radius: 50% !important; /* Macht sie rund */
-        padding: 0 !important; /* Entfernt Padding für perfekte Zentrierung des Icons */
+        max-width: 50px !important;
+        border-radius: 50% !important;
+        padding: 0 !important;
         display: inline-flex;
         align-items: center;
         justify-content: center;
     }
 
-    /* Blendet den Text aus */
+    /* Text ausblenden */
     .connect-buttons .btn span {
         display: none !important;
     }
-
-    /* Icons etwas größer für bessere Bedienbarkeit auf dem Handy */
+    /* Icons im Kreis zentrieren */
     .connect-buttons .btn i,
     .connect-buttons .btn svg {
-        margin: 0 !important; /* Entfernt den Abstand, den wir für den Text hatten */
+        margin: 0 !important;
         font-size: 1.4rem;
     }
 
