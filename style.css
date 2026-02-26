@@ -151,6 +151,10 @@ h3 i {
 /* --- LEBENSLAUF & DETAILS --- */
 .exp-item, .edu-item { margin-bottom: 20px; }
 
+.cv-date {
+    color: var(--text-color);
+}
+
 .exp-item h3 a, .edu-item h3 a {
     text-decoration: none;
     color: inherit;
