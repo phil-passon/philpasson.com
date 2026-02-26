@@ -342,6 +342,21 @@ details[open] .toggle-arrow { transform: rotate(180deg); opacity: 1; }
 }
 
 @media (max-width: 600px) {
+    .tech-stack {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+
+    .tech-item img,
+    .tech-item i {
+        width: 35px;
+        height: 35px;
+    }
+
+    .tech-item span {
+        font-size: 0.75rem;
+    }
+
     .connect-buttons .btn span { display: none; }
 
     .connect-buttons .btn i,
