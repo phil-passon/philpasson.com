@@ -169,9 +169,28 @@ h3 i {
 details { display: block; }
 
 summary {
-    list-style: none;
-    outline: none;
-    cursor: pointer;
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.summary-header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.position-title {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.dropdown-text {
+    margin: 15px 0 10px 0;
+    padding-left: 5px;
+    border-left: 2px solid var(--border-color);
 }
 
 summary::-webkit-details-marker { display: none; }

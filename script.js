@@ -3,6 +3,7 @@ const langToggle = document.getElementById('lang-toggle');
 let currentLang = localStorage.getItem('lang') || 'de';
 let currentTheme = localStorage.getItem('theme') || 'light';
 
+/* --- THEME MANAGEMENT --- */
 function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     document.body.setAttribute('data-theme', theme);
@@ -10,10 +11,19 @@ function applyTheme(theme) {
     localStorage.setItem('theme', theme);
 }
 
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const activeTheme = document.documentElement.getAttribute('data-theme') || 'light';
+        applyTheme(activeTheme === 'dark' ? 'light' : 'dark');
+    });
+}
+
+/* --- LANGUAGE MANAGEMENT --- */
 function applyLanguage(lang) {
     currentLang = lang;
     if (langToggle) langToggle.textContent = lang === 'de' ? '🇬🇧' : '🇩🇪';
     localStorage.setItem('lang', lang);
+
     document.querySelectorAll('[data-en]').forEach(el => {
         el.textContent = el.getAttribute(`data-${lang}`);
     });
@@ -31,29 +41,18 @@ function applyLanguage(lang) {
     }
 }
 
-applyTheme(currentTheme);
-applyLanguage(currentLang);
-
-if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-        const activeTheme = document.documentElement.getAttribute('data-theme') || 'light';
-        applyTheme(activeTheme === 'dark' ? 'light' : 'dark');
-    });
-}
-
 if (langToggle) {
     langToggle.addEventListener('click', () => {
         applyLanguage(currentLang === 'de' ? 'en' : 'de');
     });
 }
 
-// --- Dropdown Logik Fix ---
+/* --- DROPDOWN LOGIC --- */
 const emailBtn = document.getElementById('email-main-btn');
 const emailDropdown = document.getElementById('email-dropdown');
 const socialBtn = document.getElementById('socials-main-btn');
 const socialDropdown = document.getElementById('socials-dropdown');
 
-// Email Dropdown Toggle
 if (emailBtn && emailDropdown) {
     emailBtn.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -62,7 +61,6 @@ if (emailBtn && emailDropdown) {
     });
 }
 
-// Socials Dropdown Toggle (Explizit getrennt für maximale Stabilität)
 if (socialBtn && socialDropdown) {
     socialBtn.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -71,7 +69,6 @@ if (socialBtn && socialDropdown) {
     });
 }
 
-// Schließen beim Klick außerhalb
 window.addEventListener('click', () => {
     if (emailDropdown) emailDropdown.classList.remove('show');
     if (socialDropdown) socialDropdown.classList.remove('show');
@@ -86,7 +83,7 @@ window.copyEmail = function() {
     });
 };
 
-// Galerie Logik
+/* --- GALLERY LOGIC --- */
 const gallery = document.getElementById('gallery');
 const reshuffleBtn = document.getElementById('reshuffle-btn');
 const totalImages = 31;
@@ -109,6 +106,10 @@ function shuffleAndDisplay() {
         gallery.appendChild(img);
     });
 }
+
+/* --- INITIALIZATION --- */
+applyTheme(currentTheme);
+applyLanguage(currentLang);
 
 if (gallery) shuffleAndDisplay();
 if (reshuffleBtn) reshuffleBtn.addEventListener('click', shuffleAndDisplay);
